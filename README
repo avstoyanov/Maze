@@ -1,0 +1,121 @@
+Aight so here's the story. I was wondering what I could do to both procrastinate on homework and do some coding. So I did homework to procrastinate on homework. Now onto what this file is actually about.
+
+Improvements can be made by making new levels, and making the blank map accessable. For this, a negative star count should be used, so it can be endless. Just a nice extra, or maybe could be a tutorial. Otherwise, it would be nice to create maps that update as the hero does certain things. An example could be an inaccessible star, a path to which opens only when all the other stars are collected. This sort of mechanic should be implemented in the actual Level class.
+
+Also I kinda think that we should be able to parse multiple letter inputs like "wwww" would loop through the move method 4 time (and breaks the loop if the move is invalid)
+
+This is how all the code looks in a 
+human-readable overview. The actual code is commented as well:
+
+Main: Game.run()
+
+Game: 
+  printMaze(){
+    Prints the maze in a nice way. Crashes if the maze is null. Don't use this 
+    if the maze is null. 
+  }
+
+  play(){
+    This is what was in the previous main method, and a bit more. 
+    Contains the main logic of the game.
+
+    Prints a short description of rules and how to play.
+    Loops until the game ends or the player quits.
+
+
+pseudocode overview:
+    printMaze;
+    while(not "quit"){
+      input = nextLine();
+      move(input);
+      checkStars (); //checks for a star where the hero is.
+      printMaze();
+      if(level changes){
+        load new level;
+      }
+      if(game over){
+        end game;
+      }
+    }
+  }
+
+  checkStars(){
+    if(star){
+      stars++; //keeps track of stars found
+    }
+    if(all stars found){
+      go to next level;
+    }
+  }
+
+  loadLevel(level){
+    set map to new level;
+  }
+
+Map:
+  Works directly with the maze and moves the player.
+  It also makes it so the game class can work with the maze.
+
+  pseudocode overview:
+  Map(side length){
+    create an empty map of the inputted size;
+    set player's position;
+  }
+
+  setupMap(){
+    side length = map.length;
+    set player position;
+  }
+
+  getMap(){get the map;}
+
+  updateMap(y, x, new_string){
+    currently unused, but changes a specific string on the map.
+  }
+
+  setCustomMaze(map){
+    myMaze = map;
+    if there is no map length saved, run setupMap()
+  }
+
+  getHeroRow(){get the heroRow;}
+  getHeroCol(){get the heroCol;}
+
+  movePlayer(input){
+    Checks if moving in the specified direction is possible.
+    Sets prevVal to the value of the space the hero moves to.
+    Moves in the specified direction.
+  }
+
+Level:
+
+This is how levels are created:
+
+  private static String[][] <mazeName> =
+            {{" ", " ", " ", " "}
+             {" ", " ", " ", " "}
+             {" ", " ", " ", " "}
+             {" ", " ", " ", " "}}
+             //^an example of an empty map.
+            //must be square, and full of spaces where there are no obstacles or stars
+  private static int <mazeName>Stars = <number of stars>; //this must not be 0
+  private static Maze <levelNumber>= new Maze(<mazeName>, <number of stars>);
+
+  private Maze[] levels = {<mazeName1>, <mazeName2>, ...};
+end of level definition
+
+  Level(level){
+    maze = levels[level].maze;
+    stars = levels[level].stars;
+    if no more levels left, end the game;
+  }
+
+The maze class groups the string array and star count into an object.
+Maze:
+  maze;
+  stars;
+
+  Maze(mazeInput, starsInput){
+    maze = mazeInput;
+    stars = starsInput;
+  }

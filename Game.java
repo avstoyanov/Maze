@@ -50,17 +50,19 @@ public class Game {
         String input = ""; //this is so the while loop can check for "quit"
         int currLev = level; //initializes currLevel, keeping track of when the level changes
         while(!input.equals("quit")){
-            printMaze(); //prints the maze
+            //printMaze(); //prints the maze
+            
             System.out.println("Where do we go?");
             input = scan.nextLine();
             Map.movePlayer(input); //moves the player based on the user input
+            printMaze();
             checkStars(); //checks if there is a star where the player is. This method also controls when the level ends.
-
             if(currLev != level){ //if the level changes, load a new one
                 loadLevel(level);
                 currLev = level;
             }
             if(Level.gameOver){ //if there are no more levels, end the game
+                
                 System.out.println("Good job! You beat the game!");
                 scan.close(); //prevent a memory leak
                 return; //stop game

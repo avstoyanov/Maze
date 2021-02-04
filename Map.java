@@ -2,11 +2,11 @@ import java.util.Locale;
 
 public class Map {
 
-    private static String myMaze[][];
+    private static String[][] myMaze;
     private static int heroRow = 0;
     private static int heroCol = 0;
     private static int mazeSize = 0;
-    public static String prevVal;
+    public static String prevVal = "";
 
     /*
     The Map constructor accepts a maze_size as an input and if it is used,
@@ -24,12 +24,20 @@ public class Map {
     }
 
     /*
-    The setMap() method sets the mazeSize variable when the Maze constructor 
+    The setupMap() method sets the mazeSize variable when the Maze constructor 
     is not used. It also places the player in the initial position.
     */
-    public static void setMap(){
+    public static void setupMap(){
         mazeSize = myMaze.length;
-        myMaze[0][0] = "X";
+        heroRow = 0;
+        heroCol = 0; 
+        myMaze[heroRow][heroCol] = "X";
+        Game.printMaze();
+    }
+
+    //mapSize setter if needed
+    public static void setSize(int size){
+      mazeSize = size;
     }
 
     /*  
@@ -51,14 +59,17 @@ public class Map {
 
     /*
     The setCustomMaze setter is responsible for setting the new map when a
-    level changes. It also calls the setMap() method the first time it is
+    level changes. It also calls the setupMap() method the first time it is
     executed.
     */
     public static void setCustomMaze(String[][] map){
         myMaze = map;
-        if(mazeSize == 0) {
-            setMap();
+        try{
+          setupMap();
+        } catch(NullPointerException e){
+          return;
         }
+        
     }
 
     /*
@@ -84,10 +95,10 @@ public class Map {
     */
     public static void movePlayer(String direction) {
         direction = direction.strip().toLowerCase();
+        prevVal = "";
         if (direction.equals("down") || direction.equals("s")) {
             if (heroRow + 1 >= mazeSize || (!myMaze[heroRow + 1][heroCol].equals(" ") && !myMaze[heroRow + 1][heroCol].equals("*"))) {
                 System.out.println("You can't go that way.");
-                prevVal = "";
             }
             else {
 
@@ -100,7 +111,6 @@ public class Map {
         else if (direction.equals("up") || direction.equals("w")) {
             if (heroRow - 1 < 0 || (!myMaze[heroRow - 1][heroCol].equals(" ") && !myMaze[heroRow - 1][heroCol].equals("*"))) {
                 System.out.println("You can't go that way.");
-                prevVal = "";
             }
             else {
                 myMaze[heroRow][heroCol] = " ";
@@ -112,7 +122,6 @@ public class Map {
         else if (direction.equals("left") || direction.equals("a")) {
             if (heroCol - 1 < 0 || (!myMaze[heroRow][heroCol - 1].equals(" ") && !myMaze[heroRow][heroCol - 1].equals("*"))) {
                 System.out.println("You can't go that way.");
-                prevVal = "";
             }
             else {
                 myMaze[heroRow][heroCol] = " ";
@@ -122,9 +131,8 @@ public class Map {
             }
         }
         else if (direction.equals("right") || direction.equals("d")) {
-            if (heroCol + 1 == mazeSize || (!myMaze[heroRow][heroCol + 1].equals(" ") && !myMaze[heroRow][heroCol + 1].equals(" "))) {
+            if (heroCol + 1 == mazeSize || (!myMaze[heroRow][heroCol + 1].equals(" ") && !myMaze[heroRow][heroCol + 1].equals("*"))) {
                 System.out.println("You can't go that way.");
-                prevVal = "";
             }
             else {
                 myMaze[heroRow][heroCol] = " ";

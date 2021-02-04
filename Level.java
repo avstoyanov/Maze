@@ -12,20 +12,29 @@ public class Level{
     private static String[][] maze1 =
             {{" "," ","|","*","|","*"},
              {"*"," ","|"," "," "," "},
-             {"]"," ","|"," ","--","--"},
+             {"-]"," ","|"," ","--","--"},
              {" "," ","|"," "," "," "},
             {" ","--","|"," ","|"," "},
              {" "," "," "," ","|","*"}};
-    private static int maze1Stars = 4;
+    private static int maze1Stars = 0;
     private static Maze level1= new Maze(maze1, maze1Stars);
 
     //THIS IS THE END OF THE CREATION OF A LEVEL. FOLLOW THIS EXAMPLE FOR FUTURE LEVELS.
 
+    private static String[][] maze2 =
+            {{" ","*"," "," ","|","*"},
+             {" ","--","|"," "," "," "},
+             {"-]"," ","|"," ","*","--"},
+             {" "," ","*"," "," "," "},
+            {" ","--","|","--","|"," "},
+             {" ","*"," "," ","|","*"}};
+    private static int maze2Stars = 6;
+    private static Maze level2= new Maze(maze2, maze2Stars);
 
 
     //The following line creates the array of levels. 
     //When adding a level, make sure to add it's object in this array, or it will not be part of the game.
-    private Maze[] levels = {level1};
+    private Maze[] levels = {level1, level2};
 
 
     /*
