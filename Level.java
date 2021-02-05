@@ -143,7 +143,7 @@ public class Level{
 
     public static void reset(int level){
       maze = levels[level].maze.clone();
-      Map.setCustomMaze(maze3);
+      Map.setCustomMaze(getMaze());
       Game.totalStarsCollected -= Game.stars;
       Game.stars = 0;
     }
