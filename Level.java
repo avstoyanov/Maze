@@ -16,7 +16,7 @@ public class Level{
              {" "," ","|"," "," "," "},
             {" ","--","|"," ","|"," "},
              {" "," "," "," ","|","*"}};
-    private static int maze1Stars = 0;
+    private static int maze1Stars = 0; //4
     private static Maze level1= new Maze(maze1, maze1Stars);
 
     //THIS IS THE END OF THE CREATION OF A LEVEL. FOLLOW THIS EXAMPLE FOR FUTURE LEVELS.
@@ -28,13 +28,33 @@ public class Level{
              {" "," ","*"," "," "," "},
             {" ","--","|","--","|"," "},
              {" ","*"," "," ","|","*"}};
-    private static int maze2Stars = 6;
+    private static int maze2Stars = 0;//6
     private static Maze level2= new Maze(maze2, maze2Stars);
+
+    
+    private static String[][] maze3 =
+            {{" "," "," ",  " ", " ","|3","*"," "," ","4"},
+             {"-"," ","--","-"," "," ","\\-","-"," ","*"},
+             {" "," "," ","*",   "2|"," "," "," "," "," "},
+             {" ","[-","--","-<", " "," ","__","__","__","__"},
+             {" "," ","*",  "1|"," "," /","nu","mb","er","*"},
+             {"__","__","_/"," "," ","/o","f","st","ars"," "},
+             {" "," "," ",   " "," /","in"," f","ir","st"," "},
+             {"##","__","__","__","/l","ev","el","?","*"," "},
+             {"  ","#","#","#"," "," "," "," "," "," "},
+             {"[]","#","#","#","1","2","3","4","5","6"}};
+             
+    private static int maze3Stars = 7;
+    private static Maze level3= new Maze(maze3, maze3Stars);
+    //add opening of gates if stars taken in order, add the box turning
+    //into a star at the end, and add logic for answering the question,
+    //so either running into the correct number or typing it
+
 
 
     //The following line creates the array of levels. 
     //When adding a level, make sure to add it's object in this array, or it will not be part of the game.
-    private Maze[] levels = {level1, level2};
+    private Maze[] levels = {level1, level2, level3};
 
 
     /*
