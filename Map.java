@@ -33,7 +33,7 @@ public class Map {
         heroCol = 0; 
         myMaze[heroRow][heroCol] = "X";
         Game.printMaze();
-    }maze
+    }
 
     //mapSize setter if needed
     public static void setSize(int size){

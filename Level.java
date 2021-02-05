@@ -63,9 +63,9 @@ public class Level{
       for(int num = 0; num < 10; num ++){
         String snum = num+"";
         int[] indexOfGate = matIndexOf(maze, snum+"#");
-        if(matCheckAround(maze, y, x, snum)[2] >= 0 && 
+        if(matCheckAround(Map.getMap(), y, x, snum)[2] >= 0 && 
           indexOfGate[2] >= 0 &&
-          ! (matIndexOf(maze, (num-1)+"#")[2] >= 0)){
+          ! (matIndexOf(Map.getMap(), (num-1)+"#")[2] >= 0)){
             Map.updateMap(indexOfGate[0], indexOfGate[1], "##");
             int[] gate = matCheckAround(maze, indexOfGate[0], indexOfGate[1], "#");
             Map.updateMap(gate[0], gate[1], " ");
