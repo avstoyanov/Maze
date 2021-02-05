@@ -81,6 +81,7 @@ public class Level{
         if(numstar[2] >= 0){
           if(maze3Condition(num)){
             maze3Action();
+            return;
           }
         }
       }
@@ -164,7 +165,7 @@ public class Level{
     }
     public Level(int level){
         if(level < levels.length){
-            maze = levels[level].maze.clone();
+            maze = levels[level].maze;
             stars = levels[level].stars;
         } else{
             gameOver = true;

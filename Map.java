@@ -145,7 +145,7 @@ public class Map {
           Level.reset(Game.level);
         }
         else if (direction.equals("i")){
-          Level.interact(heroCol, heroRow);
+          Level.interact(heroRow, heroCol);
         }
     }
 
