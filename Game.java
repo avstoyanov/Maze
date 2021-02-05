@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class Game {
   //variable definitions
-    private static int level = 0; 
-    private static int stars = 0;
+    public static int level = 0; 
+    public static int stars = 0;
     private static int starsInLevel;
-    private static int totalStarsCollected = 0;
+    public static int totalStarsCollected = 0;
 
     /*
     The printMaze() method simply prints each value in the map and
@@ -42,7 +42,8 @@ public class Game {
         System.out.println("Hello! welcome to this simple game.\n " +
                 "Each time an action is taken, the game will update and prompt for another action. \n" +
                 "The possible actions are either 'up', 'left', 'down', or 'right', \n" +
-                "but 'w', 'a', 's', or 'd' respectively can be used instead");
+                "but 'w', 'a', 's', or 'd' respectively can be used instead.\n" +
+                "'restart' or 'r' will restart the current level, and 'i' will interact with numbers that have stars attached to them");
         System.out.println("Find all stars to win!\n");
 
         loadLevel(level);
@@ -82,8 +83,9 @@ public class Game {
             System.out.println("You found a star!");
             totalStarsCollected++;
             System.out.println("Total stars found: "+totalStarsCollected);
+            Level.starInteraction(Map.heroRow, Map.heroCol);
         }
-        if(stars == starsInLevel){
+        if(stars >= starsInLevel){
             System.out.println("Nice! Level complete.");
             stars = 0;
             level++;

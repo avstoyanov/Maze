@@ -3,8 +3,8 @@ import java.util.Locale;
 public class Map {
 
     private static String[][] myMaze;
-    private static int heroRow = 0;
-    private static int heroCol = 0;
+    public static int heroRow = 0;
+    public static int heroCol = 0;
     private static int mazeSize = 0;
     public static String prevVal = "";
 
@@ -140,6 +140,12 @@ public class Map {
                 prevVal = myMaze[heroRow][heroCol];
                 myMaze[heroRow][heroCol] = "X";
             }
+        }
+        else if (direction.equals("restart") || direction.equals("r")) {
+          Game.loadLevel(Game.level);
+        }
+        else if (direction.equals("i")){
+          Level.interact(heroCol, heroRow);
         }
     }
 
