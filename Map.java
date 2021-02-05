@@ -33,7 +33,7 @@ public class Map {
         heroCol = 0; 
         myMaze[heroRow][heroCol] = "X";
         Game.printMaze();
-    }
+    }maze
 
     //mapSize setter if needed
     public static void setSize(int size){
@@ -142,7 +142,7 @@ public class Map {
             }
         }
         else if (direction.equals("restart") || direction.equals("r")) {
-          Game.loadLevel(Game.level);
+          Level.reset(Game.level);
         }
         else if (direction.equals("i")){
           Level.interact(heroCol, heroRow);

@@ -1,6 +1,6 @@
 
 public class Level{
-    public static String[][] maze;
+    private static String[][] maze;
     public static int stars;
     public static boolean gameOver = false; //this field decides if the game is over or not
 
@@ -17,7 +17,7 @@ public class Level{
              {" "," ","|"," "," "," "},
             {" ","--","|"," ","|"," "},
              {" "," "," "," ","|","*"}};
-    private static int maze1Stars = 0; //4
+    private static int maze1Stars = 1; //4
     private static Maze level1= new Maze(maze1, maze1Stars);
 
     //THIS IS THE END OF THE CREATION OF A LEVEL. FOLLOW THIS EXAMPLE FOR FUTURE LEVELS.
@@ -42,11 +42,11 @@ public class Level{
              {"__","__","_/"," "," ","/o","f","st","ars"," "},
              {" "," #"," ",   " "," /","in"," f","ir","st"," "},
              {" ","4#","__","__","/l","ev","el","?","*"," "},
-             {"  "," #"," #"," #"," "," "," "," "," "," "},
+             {" "," #"," #"," #"," "," "," "," "," "," "},
              {"[]","3#","2#","1#","1*","2*","3*","4*","5*","6*"}};
              
     private static int maze3Stars = 7;
-    private static Maze level3= new Maze(maze3, maze3Stars);
+    private static final Maze level3= new Maze(maze3, maze3Stars);
     private static boolean maze3Condition(int in){
       if(in == maze1Stars){
         return true;
@@ -139,9 +139,11 @@ public class Level{
     //The following line creates the array of levels. 
     //When adding a level, make sure to add it's object in this array, or it will not be part of the game.
     private static final Maze[] levels = {level1, level2, level3};
+
+
     public static void reset(int level){
       maze = levels[level].maze.clone();
-      Map.setCustomMaze(maze);
+      Map.setCustomMaze(maze3);
       Game.totalStarsCollected -= Game.stars;
       Game.stars = 0;
     }
@@ -151,6 +153,15 @@ public class Level{
     updates the maze and stars fields to the corresponding values. Otherwise 
     both the Maze and stars fields are set to a value of void.
     */
+
+    public static String[][] getMaze(){
+      String[][] mazeOut = new String[maze.length][maze.length];
+      for(int f = 0; f < maze.length; f ++){
+        for(int g = 0; g < maze.length; g++){
+          mazeOut[f][g] = maze[f][g];
+        }
+      }return mazeOut;
+    }
     public Level(int level){
         if(level < levels.length){
             maze = levels[level].maze.clone();

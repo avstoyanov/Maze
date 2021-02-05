@@ -98,7 +98,7 @@ public class Game {
     */
     public static void loadLevel(int level){
         Level currentLevel = new Level(level);
-        Map.setCustomMaze(currentLevel.maze);
+        Map.setCustomMaze(currentLevel.getMaze());
         starsInLevel = currentLevel.stars;
     }
 }
